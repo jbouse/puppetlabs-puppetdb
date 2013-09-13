@@ -44,4 +44,29 @@ class puppetdb::server::jetty_ini(
     setting => 'ssl-port',
     value   => $ssl_listen_port,
   }
+
+  ini_setting {'puppetdb_sslkey':
+    ensure  => $ssl_setting_ensure,
+    setting => 'ssl-key',
+    value   => '/etc/puppetdb/ssl/private.pem',
+  }
+
+  ini_setting {'puppetdb_sslcert':
+    ensure  => $ssl_setting_ensure,
+    setting => 'ssl-cert',
+    value   => '/etc/puppetdb/ssl/public.pem',
+  }
+
+  ini_setting {'puppetdb_sslcacert':
+    ensure  => $ssl_setting_ensure,
+    setting => 'ssl-ca-cert',
+    value   => '/etc/puppetdb/ssl/ca.pem',
+  }
+
+  if (!$disable_ssl) {
+    exec {'run puppetdb-ssl-setup':
+      command => '/usr/sbin/puppetdb-ssl-setup',
+      creates => '/etc/puppetdb/ssl/ca.pem',  
+    }
+  }
 }
