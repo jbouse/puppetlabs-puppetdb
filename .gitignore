@@ -3,5 +3,5 @@ metadata.json
 *.swp
 .DS_Store
 coverage/
-spec/fixtures/modules/*
+spec/fixtures/
 Gemfile.lock
