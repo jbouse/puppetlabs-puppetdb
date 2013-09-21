@@ -32,7 +32,7 @@ class puppetdb::database::postgresql_db(
 ) inherits puppetdb::params {
 
   # create the puppetdb database
-  postgresql::db{ $database_name:
+  postgresql::server::db{ $database_name:
     user     => $database_username,
     password => $database_password,
     grant    => 'all',

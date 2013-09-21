@@ -6,8 +6,9 @@ describe 'puppetdb', :type => :class do
   context 'on a supported platform' do
     let(:facts) do
       {
-        :osfamily => 'RedHat',
-        :postgres_default_version => '9.1',
+        :osfamily => 'Debian',
+        :operatingsystem => 'Debian',
+        :operatingsystemrelease => '6.0',
         :concat_basedir => '/var/lib/puppet/concat',
       }
     end
@@ -20,8 +21,9 @@ describe 'puppetdb', :type => :class do
   context 'with invalid arguments on a supported platform' do
     let(:facts) do
       {
-        :osfamily => 'RedHat',
-        :postgres_default_version => '9.1',
+        :osfamily => 'Debian',
+        :operatingsystem => 'Debian',
+        :operatingsystemrelease => '6.0',
         :concat_basedir => '/var/lib/puppet/concat',
       }
     end

@@ -61,12 +61,9 @@ class puppetdb::database::postgresql(
 
   # get the pg server up and running
   class { '::postgresql::server':
-    config_hash => {
-      # TODO: make this stuff configurable
-      'ip_mask_allow_all_users' => '0.0.0.0/0',
-      'listen_addresses'        => $listen_addresses,
-      'manage_redhat_firewall'  => $final_manage_redhat_firewall,
-    },
+    ip_mask_allow_all_users => '0.0.0.0/0',
+    listen_addresses        => $listen_addresses,
+    manage_firewall         => $final_manage_redhat_firewall,
   }
 
   # create the puppetdb database
